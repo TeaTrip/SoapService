@@ -1,10 +1,10 @@
-package core.service;
+package core.webservice;
 
 import core.models.Movie;
 
 import java.util.List;
 
-public interface MovieServiceI {
+public interface MovieWebServiceI {
     public List<Movie> selectAll();
 
     public Movie selectById(int id);

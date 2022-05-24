@@ -1,4 +1,4 @@
-package core.service;
+package core.webservice;
 
 import core.methods.movie.MovieMethodsImplement;
 import core.models.Movie;
@@ -9,7 +9,7 @@ import javax.jws.WebService;
 import java.util.List;
 
 @WebService(serviceName = "MovieService")
-public class MovieService implements  MovieServiceI{
+public class MovieWebService implements MovieWebServiceI {
     private final MovieMethodsImplement dbMovie = new MovieMethodsImplement();
 
 
