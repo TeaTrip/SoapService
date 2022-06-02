@@ -15,6 +15,7 @@ public class Movie {
     public Movie(int id, int year, int rating, String name, String genre, String director){
         this.id = id;
         this.year = year;
+        this.rating = rating;
         this.name = name;
         this.genre = genre;
         this.director = director;

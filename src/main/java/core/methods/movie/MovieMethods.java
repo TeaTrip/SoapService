@@ -26,5 +26,10 @@ public interface MovieMethods {
 
     public List<Movie> selectByRatingAndGenre(String rating, String genre);
 
+    public int createNewMovie(Movie movie);
+
+    public int updateMovie(Movie movie);
+
+    public int deleteMovie(int id);
 
 }

@@ -10,6 +10,7 @@ import java.util.Properties;
 
 import client.core.webservice.Movie;
 import client.core.webservice.MovieService;
+import core.methods.movie.MovieMethodsImplement;
 //import core.wishmaster.ifmo.ws.jaxws.client.Movie;
 //import core.wishmaster.ifmo.ws.jaxws.client.MovieService;
 
@@ -29,7 +30,7 @@ public class Client {
 
         URL url = new URL("http://localhost:8282/MovieService?wsdl");
         URL url2 = new URL("http://desktop-fnkud04:8080/J2EEService-2.0-SNAPSHOT/MovieService?wsdl");
-        MovieService movieService = new MovieService(url2);
+        MovieService movieService = new MovieService(url);
 
         System.out.println("\n===============================\n" +
                 "selectAll\n");
@@ -97,6 +98,32 @@ public class Client {
         System.out.println("\n===============================\n" +
                 "selectByYearAndRating\n");
         movies = movieService.getMovieWebServicePort().selectByYearAndRating("2021", "7");
+        for (Movie movie : movies) {
+            System.out.println(movie.toString());
+        }
+        System.out.println("===============================");
+
+        System.out.println("\n===============================\n" +
+                "createNewMovie\n");
+        int id = movieService.getMovieWebServicePort().createNewMovie("new film", 1998, 8, "so sad", "Morgan Freeman");
+        System.out.println("Created movie id is - "+id);
+        System.out.println("===============================");
+
+        System.out.println("\n===============================\n" +
+                "createNewMovie\n");
+        int updateCode = movieService.getMovieWebServicePort().updateMovie(1,"new film UPDATED", 1998, 8, "so good", "Obama");
+        System.out.println("Created movie id is - "+updateCode);
+        System.out.println("===============================");
+
+        System.out.println("\n===============================\n" +
+                "createNewMovie\n");
+        int deleteCode = movieService.getMovieWebServicePort().deleteMovie(2);
+        System.out.println("Created movie id is - "+updateCode);
+        System.out.println("===============================");
+
+        System.out.println("\n===============================\n" +
+                "selectAll\n");
+        movies = movieService.getMovieWebServicePort().selectAll();
         for (Movie movie : movies) {
             System.out.println(movie.toString());
         }

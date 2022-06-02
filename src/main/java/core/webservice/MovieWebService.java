@@ -75,4 +75,33 @@ public class MovieWebService implements MovieWebServiceI {
                                               @WebParam(name = "genre")String genre) {
         return dbMovie.selectByRatingAndGenre(rating, genre);
     }
+
+    @WebMethod(operationName = "createNewMovie")
+    @Override
+    public int createNewMovie(@WebParam(name = "name") String name,
+                              @WebParam(name = "year") int year,
+                              @WebParam(name = "rating") int rating,
+                              @WebParam(name = "genre") String genre,
+                              @WebParam(name = "director") String director) {
+        Movie movie = new Movie(0, year, rating, name, genre, director);
+        return dbMovie.createNewMovie(movie);
+    }
+
+    @WebMethod(operationName = "updateMovie")
+    @Override
+    public int updateMovie(@WebParam(name = "id") int id,
+                           @WebParam(name = "name") String name,
+                           @WebParam(name = "year") int year,
+                           @WebParam(name = "rating") int rating,
+                           @WebParam(name = "genre") String genre,
+                           @WebParam(name = "director") String director) {
+        Movie movie = new Movie(id, year, rating, name, genre, director);
+        return dbMovie.updateMovie(movie);
+    }
+
+    @WebMethod(operationName = "deleteMovie")
+    @Override
+    public int deleteMovie(@WebParam(name = "id") int id) {
+        return dbMovie.deleteMovie(id);
+    }
 }

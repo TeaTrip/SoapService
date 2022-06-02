@@ -190,4 +190,52 @@ public class MovieMethodsImplement implements MovieMethods {
         }
         return movies;
     }
+
+    @Override
+    public int createNewMovie(Movie movie) {
+        int id = -1;
+        try (Connection connection = Connector.connect()){
+            Statement statement = connection.createStatement();
+            String SqlQuery = String.format("INSERT INTO movies (name, year, rating, genre, director) " +
+                            "values ('%s', '%d', '%d', '%s', '%s') RETURNING id"
+                            ,movie.getName(),movie.getYear(),movie.getRating(), movie.getGenre(), movie.getDirector());
+            ResultSet result = statement.executeQuery(SqlQuery);
+            result.next();
+            id = result.getInt("id");
+            System.out.println("id is" + id);
+        } catch (SQLException e) {
+            System.out.println("createNewMovie error");
+            e.printStackTrace();
+        }
+        return id;
+    }
+
+    @Override
+    public int updateMovie(Movie movie) {
+        int result = -1;
+        try (Connection connection = Connector.connect()){
+            Statement statement = connection.createStatement();
+            String SqlQuery = String.format("UPDATE movies set name='%s', year='%d', rating='%d', genre='%s', director='%s' WHERE id='%d';"
+                    ,movie.getName(), movie.getYear(), movie.getRating(), movie.getGenre(), movie.getDirector(), movie.getId());
+            result = statement.executeUpdate(SqlQuery);
+        } catch (SQLException e) {
+            System.out.println("updateMovie error");
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
+    public int deleteMovie(int id) {
+        int result = -1;
+        try (Connection connection = Connector.connect()){
+            Statement statement = connection.createStatement();
+            String SqlQuery = String.format("DELETE FROM movies WHERE id='%d'", id);
+            result = statement.executeUpdate(SqlQuery);
+        } catch (SQLException e) {
+            System.out.println("deleteMovie error");
+            e.printStackTrace();
+        }
+        return result;
+    }
 }

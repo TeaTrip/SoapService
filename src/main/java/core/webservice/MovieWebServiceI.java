@@ -2,6 +2,8 @@ package core.webservice;
 
 import core.models.Movie;
 
+import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import java.util.List;
 
 public interface MovieWebServiceI {
@@ -24,4 +26,10 @@ public interface MovieWebServiceI {
     public List<Movie> selectByYearAndGenre(String year, String genre);
 
     public List<Movie> selectByRatingAndGenre(String rating, String genre);
+
+    public int createNewMovie(String name, int year, int rating, String genre, String director);
+
+    public int updateMovie(int id, String name, int year, int rating, String genre, String director);
+
+    public int deleteMovie(int id);
 }
