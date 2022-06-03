@@ -6,6 +6,7 @@ import javax.xml.ws.Endpoint;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        System.setProperty("com.sun.xml.ws.fault.SOAPFaultBuilder.disableCaptureStackTrace", "false");
         String url = "http://localhost:8282/MovieService";
         Endpoint.publish(url, new MovieWebService());
     }

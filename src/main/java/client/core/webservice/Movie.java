@@ -160,14 +160,6 @@ public class Movie {
         return year;
     }
 
-    /**
-     * Sets the value of the year property.
-     * 
-     */
-    public void setYear(int value) {
-        this.year = value;
-    }
-
     @Override
     public String toString() {
         return "Movie{" +
@@ -179,4 +171,13 @@ public class Movie {
                 ", year=" + year +
                 '}';
     }
+
+    /**
+     * Sets the value of the year property.
+     * 
+     */
+    public void setYear(int value) {
+        this.year = value;
+    }
+
 }

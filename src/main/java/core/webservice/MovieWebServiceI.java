@@ -1,5 +1,6 @@
 package core.webservice;
 
+import core.errors.IllegalParameterException;
 import core.models.Movie;
 
 import javax.jws.WebMethod;
@@ -27,9 +28,9 @@ public interface MovieWebServiceI {
 
     public List<Movie> selectByRatingAndGenre(String rating, String genre);
 
-    public int createNewMovie(String name, int year, int rating, String genre, String director);
+    public int createNewMovie(String name, int year, int rating, String genre, String director) throws IllegalParameterException;
 
-    public int updateMovie(int id, String name, int year, int rating, String genre, String director);
+    public int updateMovie(int id, String name, int year, int rating, String genre, String director) throws IllegalParameterException;
 
-    public int deleteMovie(int id);
+    public int deleteMovie(int id) throws IllegalParameterException;
 }

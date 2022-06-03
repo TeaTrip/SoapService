@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.Properties;
 
 
-
-
+import client.core.webservice.IllegalParameterException;
 import client.core.webservice.Movie;
 import client.core.webservice.MovieService;
 import core.methods.movie.MovieMethodsImplement;
@@ -39,6 +38,9 @@ public class Client {
             System.out.println(movie.toString());
         }
         System.out.println("===============================");
+
+
+
         System.out.println("\n===============================\n" +
                 "selectByName\n");
         movies = movieService.getMovieWebServicePort().selectByName("Не смотрите наверх");
@@ -46,6 +48,8 @@ public class Client {
             System.out.println(movie.toString());
         }
         System.out.println("===============================");
+
+
 
         System.out.println("\n===============================\n" +
                 "selectByDirector\n");
@@ -55,6 +59,8 @@ public class Client {
         }
         System.out.println("===============================");
 
+
+
         System.out.println("\n===============================\n" +
                 "selectByGenre\n");
         movies = movieService.getMovieWebServicePort().selectByGenre("Комедия");
@@ -62,6 +68,8 @@ public class Client {
             System.out.println(movie.toString());
         }
         System.out.println("===============================");
+
+
 
         System.out.println("\n===============================\n" +
                 "selectByRating\n");
@@ -71,6 +79,8 @@ public class Client {
         }
         System.out.println("===============================");
 
+
+
         System.out.println("\n===============================\n" +
                 "selectByYear\n");
         movies = movieService.getMovieWebServicePort().selectByYear(2009);
@@ -78,6 +88,8 @@ public class Client {
             System.out.println(movie.toString());
         }
         System.out.println("===============================");
+
+
 
         System.out.println("\n===============================\n" +
                 "selectByRatingAndGenre\n");
@@ -87,6 +99,8 @@ public class Client {
         }
         System.out.println("===============================");
 
+
+
         System.out.println("\n===============================\n" +
                 "selectByYearAndGenre\n");
         movies = movieService.getMovieWebServicePort().selectByYearAndGenre("2021", "Драма");
@@ -94,6 +108,8 @@ public class Client {
             System.out.println(movie.toString());
         }
         System.out.println("===============================");
+
+
 
         System.out.println("\n===============================\n" +
                 "selectByYearAndRating\n");
@@ -103,23 +119,47 @@ public class Client {
         }
         System.out.println("===============================");
 
-        System.out.println("\n===============================\n" +
-                "createNewMovie\n");
-        int id = movieService.getMovieWebServicePort().createNewMovie("new film", 1998, 8, "so sad", "Morgan Freeman");
-        System.out.println("Created movie id is - "+id);
-        System.out.println("===============================");
+
 
         System.out.println("\n===============================\n" +
                 "createNewMovie\n");
-        int updateCode = movieService.getMovieWebServicePort().updateMovie(1,"new film UPDATED", 1998, 8, "so good", "Obama");
-        System.out.println("Created movie id is - "+updateCode);
+        try {
+            int id = movieService.getMovieWebServicePort().createNewMovie("new film", 1998, 8, "so sad", "Morgan Freeman");
+            System.out.println("Created movie id is - "+id);
+        }
+        catch (IllegalParameterException e){
+            System.out.println(e.getMessage());
+        }
         System.out.println("===============================");
+
+
+
+        System.out.println("\n===============================\n" +
+                "updateMovie\n");
+        try {
+            int updateCode = 0;
+            updateCode = movieService.getMovieWebServicePort().updateMovie(100,"new film UPDATED", 1998, 8, "so good", "Obama");
+            System.out.println("Updated movie id is - "+updateCode);
+        } catch (IllegalParameterException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("===============================");
+
+
+
 
         System.out.println("\n===============================\n" +
                 "createNewMovie\n");
-        int deleteCode = movieService.getMovieWebServicePort().deleteMovie(2);
-        System.out.println("Created movie id is - "+updateCode);
+        try {
+            int deleteCode = movieService.getMovieWebServicePort().deleteMovie(2000);
+            System.out.println("Deleted movie id is - "+deleteCode);
+        } catch (IllegalParameterException e) {
+            System.out.println(e.getMessage());
+        }
         System.out.println("===============================");
+
+
+
 
         System.out.println("\n===============================\n" +
                 "selectAll\n");

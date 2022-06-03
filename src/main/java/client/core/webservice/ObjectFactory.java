@@ -1,8 +1,6 @@
 
 package client.core.webservice;
 
-import client.core.webservice.*;
-
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
@@ -36,13 +34,14 @@ public class ObjectFactory {
     private final static QName _SelectByRatingResponse_QNAME = new QName("http://webservice.core/", "selectByRatingResponse");
     private final static QName _SelectByGenreResponse_QNAME = new QName("http://webservice.core/", "selectByGenreResponse");
     private final static QName _SelectByYearAndGenreResponse_QNAME = new QName("http://webservice.core/", "selectByYearAndGenreResponse");
-    private final static QName _SelectByYearResponse_QNAME = new QName("http://webservice.core/", "selectByYearResponse");
     private final static QName _SelectByGenre_QNAME = new QName("http://webservice.core/", "selectByGenre");
+    private final static QName _SelectByYearResponse_QNAME = new QName("http://webservice.core/", "selectByYearResponse");
     private final static QName _SelectByYear_QNAME = new QName("http://webservice.core/", "selectByYear");
     private final static QName _SelectByRatingAndGenreResponse_QNAME = new QName("http://webservice.core/", "selectByRatingAndGenreResponse");
     private final static QName _CreateNewMovieResponse_QNAME = new QName("http://webservice.core/", "createNewMovieResponse");
     private final static QName _SelectByDirectorResponse_QNAME = new QName("http://webservice.core/", "selectByDirectorResponse");
     private final static QName _SelectById_QNAME = new QName("http://webservice.core/", "selectById");
+    private final static QName _IllegalParameterException_QNAME = new QName("http://webservice.core/", "IllegalParameterException");
     private final static QName _SelectByDirector_QNAME = new QName("http://webservice.core/", "selectByDirector");
     private final static QName _SelectByNameResponse_QNAME = new QName("http://webservice.core/", "selectByNameResponse");
     private final static QName _SelectByYearAndGenre_QNAME = new QName("http://webservice.core/", "selectByYearAndGenre");
@@ -64,48 +63,48 @@ public class ObjectFactory {
      * Create an instance of {@link SelectByYearAndGenreResponse }
      * 
      */
-    public client.core.webservice.SelectByYearAndGenreResponse createSelectByYearAndGenreResponse() {
-        return new client.core.webservice.SelectByYearAndGenreResponse();
-    }
-
-    /**
-     * Create an instance of {@link SelectByGenre }
-     * 
-     */
-    public client.core.webservice.SelectByGenre createSelectByGenre() {
-        return new client.core.webservice.SelectByGenre();
+    public SelectByYearAndGenreResponse createSelectByYearAndGenreResponse() {
+        return new SelectByYearAndGenreResponse();
     }
 
     /**
      * Create an instance of {@link SelectByYearResponse }
      * 
      */
-    public client.core.webservice.SelectByYearResponse createSelectByYearResponse() {
-        return new client.core.webservice.SelectByYearResponse();
+    public SelectByYearResponse createSelectByYearResponse() {
+        return new SelectByYearResponse();
+    }
+
+    /**
+     * Create an instance of {@link SelectByGenre }
+     * 
+     */
+    public SelectByGenre createSelectByGenre() {
+        return new SelectByGenre();
     }
 
     /**
      * Create an instance of {@link SelectByGenreResponse }
      * 
      */
-    public client.core.webservice.SelectByGenreResponse createSelectByGenreResponse() {
-        return new client.core.webservice.SelectByGenreResponse();
+    public SelectByGenreResponse createSelectByGenreResponse() {
+        return new SelectByGenreResponse();
     }
 
     /**
      * Create an instance of {@link SelectAllResponse }
      * 
      */
-    public client.core.webservice.SelectAllResponse createSelectAllResponse() {
-        return new client.core.webservice.SelectAllResponse();
+    public SelectAllResponse createSelectAllResponse() {
+        return new SelectAllResponse();
     }
 
     /**
      * Create an instance of {@link SelectByRatingResponse }
      * 
      */
-    public client.core.webservice.SelectByRatingResponse createSelectByRatingResponse() {
-        return new client.core.webservice.SelectByRatingResponse();
+    public SelectByRatingResponse createSelectByRatingResponse() {
+        return new SelectByRatingResponse();
     }
 
     /**
@@ -128,24 +127,24 @@ public class ObjectFactory {
      * Create an instance of {@link SelectByRating }
      * 
      */
-    public client.core.webservice.SelectByRating createSelectByRating() {
-        return new client.core.webservice.SelectByRating();
+    public SelectByRating createSelectByRating() {
+        return new SelectByRating();
     }
 
     /**
      * Create an instance of {@link SelectByYearAndRatingResponse }
      * 
      */
-    public client.core.webservice.SelectByYearAndRatingResponse createSelectByYearAndRatingResponse() {
-        return new client.core.webservice.SelectByYearAndRatingResponse();
+    public SelectByYearAndRatingResponse createSelectByYearAndRatingResponse() {
+        return new SelectByYearAndRatingResponse();
     }
 
     /**
      * Create an instance of {@link SelectByYearAndRating }
      * 
      */
-    public client.core.webservice.SelectByYearAndRating createSelectByYearAndRating() {
-        return new client.core.webservice.SelectByYearAndRating();
+    public SelectByYearAndRating createSelectByYearAndRating() {
+        return new SelectByYearAndRating();
     }
 
     /**
@@ -160,8 +159,8 @@ public class ObjectFactory {
      * Create an instance of {@link SelectByIdResponse }
      * 
      */
-    public client.core.webservice.SelectByIdResponse createSelectByIdResponse() {
-        return new client.core.webservice.SelectByIdResponse();
+    public SelectByIdResponse createSelectByIdResponse() {
+        return new SelectByIdResponse();
     }
 
     /**
@@ -176,8 +175,8 @@ public class ObjectFactory {
      * Create an instance of {@link SelectByRatingAndGenre }
      * 
      */
-    public client.core.webservice.SelectByRatingAndGenre createSelectByRatingAndGenre() {
-        return new client.core.webservice.SelectByRatingAndGenre();
+    public SelectByRatingAndGenre createSelectByRatingAndGenre() {
+        return new SelectByRatingAndGenre();
     }
 
     /**
@@ -192,72 +191,80 @@ public class ObjectFactory {
      * Create an instance of {@link SelectAll }
      * 
      */
-    public client.core.webservice.SelectAll createSelectAll() {
-        return new client.core.webservice.SelectAll();
+    public SelectAll createSelectAll() {
+        return new SelectAll();
     }
 
     /**
      * Create an instance of {@link SelectByName }
      * 
      */
-    public client.core.webservice.SelectByName createSelectByName() {
-        return new client.core.webservice.SelectByName();
+    public SelectByName createSelectByName() {
+        return new SelectByName();
     }
 
     /**
      * Create an instance of {@link SelectByYearAndGenre }
      * 
      */
-    public client.core.webservice.SelectByYearAndGenre createSelectByYearAndGenre() {
-        return new client.core.webservice.SelectByYearAndGenre();
+    public SelectByYearAndGenre createSelectByYearAndGenre() {
+        return new SelectByYearAndGenre();
     }
 
     /**
      * Create an instance of {@link SelectByNameResponse }
      * 
      */
-    public client.core.webservice.SelectByNameResponse createSelectByNameResponse() {
-        return new client.core.webservice.SelectByNameResponse();
+    public SelectByNameResponse createSelectByNameResponse() {
+        return new SelectByNameResponse();
     }
 
     /**
      * Create an instance of {@link SelectById }
      * 
      */
-    public client.core.webservice.SelectById createSelectById() {
-        return new client.core.webservice.SelectById();
+    public SelectById createSelectById() {
+        return new SelectById();
+    }
+
+    /**
+     * Create an instance of {@link MovieServiceFault }
+     * 
+     */
+    public MovieServiceFault createMovieServiceFault() {
+        return new MovieServiceFault();
     }
 
     /**
      * Create an instance of {@link SelectByDirector }
      * 
      */
-    public client.core.webservice.SelectByDirector createSelectByDirector() {
-        return new client.core.webservice.SelectByDirector();
+    public SelectByDirector createSelectByDirector() {
+        return new SelectByDirector();
     }
 
     /**
      * Create an instance of {@link SelectByYear }
      * 
      */
-    public client.core.webservice.SelectByYear createSelectByYear() {
-        return new client.core.webservice.SelectByYear();
+    public SelectByYear createSelectByYear() {
+        return new SelectByYear();
     }
 
     /**
      * Create an instance of {@link SelectByRatingAndGenreResponse }
      * 
      */
-    public client.core.webservice.SelectByRatingAndGenreResponse createSelectByRatingAndGenreResponse() {
-        return new client.core.webservice.SelectByRatingAndGenreResponse();
+    public SelectByRatingAndGenreResponse createSelectByRatingAndGenreResponse() {
+        return new SelectByRatingAndGenreResponse();
     }
 
     /**
      * Create an instance of {@link SelectByDirectorResponse }
      * 
      */
-    public client.core.webservice.SelectByDirectorResponse createSelectByDirectorResponse() {
-        return new client.core.webservice.SelectByDirectorResponse();
+    public SelectByDirectorResponse createSelectByDirectorResponse() {
+        return new SelectByDirectorResponse();
     }
 
     /**
@@ -281,8 +288,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByYearAndRatingResponse")
-    public JAXBElement<client.core.webservice.SelectByYearAndRatingResponse> createSelectByYearAndRatingResponse(client.core.webservice.SelectByYearAndRatingResponse value) {
-        return new JAXBElement<client.core.webservice.SelectByYearAndRatingResponse>(_SelectByYearAndRatingResponse_QNAME, client.core.webservice.SelectByYearAndRatingResponse.class, null, value);
+    public JAXBElement<SelectByYearAndRatingResponse> createSelectByYearAndRatingResponse(SelectByYearAndRatingResponse value) {
+        return new JAXBElement<SelectByYearAndRatingResponse>(_SelectByYearAndRatingResponse_QNAME, SelectByYearAndRatingResponse.class, null, value);
     }
 
     /**
@@ -290,8 +297,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByYearAndRating")
-    public JAXBElement<client.core.webservice.SelectByYearAndRating> createSelectByYearAndRating(client.core.webservice.SelectByYearAndRating value) {
-        return new JAXBElement<client.core.webservice.SelectByYearAndRating>(_SelectByYearAndRating_QNAME, client.core.webservice.SelectByYearAndRating.class, null, value);
+    public JAXBElement<SelectByYearAndRating> createSelectByYearAndRating(SelectByYearAndRating value) {
+        return new JAXBElement<SelectByYearAndRating>(_SelectByYearAndRating_QNAME, SelectByYearAndRating.class, null, value);
     }
 
     /**
@@ -308,8 +315,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByRating")
-    public JAXBElement<client.core.webservice.SelectByRating> createSelectByRating(client.core.webservice.SelectByRating value) {
-        return new JAXBElement<client.core.webservice.SelectByRating>(_SelectByRating_QNAME, client.core.webservice.SelectByRating.class, null, value);
+    public JAXBElement<SelectByRating> createSelectByRating(SelectByRating value) {
+        return new JAXBElement<SelectByRating>(_SelectByRating_QNAME, SelectByRating.class, null, value);
     }
 
     /**
@@ -335,8 +342,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectAllResponse")
-    public JAXBElement<client.core.webservice.SelectAllResponse> createSelectAllResponse(client.core.webservice.SelectAllResponse value) {
-        return new JAXBElement<client.core.webservice.SelectAllResponse>(_SelectAllResponse_QNAME, client.core.webservice.SelectAllResponse.class, null, value);
+    public JAXBElement<SelectAllResponse> createSelectAllResponse(SelectAllResponse value) {
+        return new JAXBElement<SelectAllResponse>(_SelectAllResponse_QNAME, SelectAllResponse.class, null, value);
     }
 
     /**
@@ -344,8 +351,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByRatingResponse")
-    public JAXBElement<client.core.webservice.SelectByRatingResponse> createSelectByRatingResponse(client.core.webservice.SelectByRatingResponse value) {
-        return new JAXBElement<client.core.webservice.SelectByRatingResponse>(_SelectByRatingResponse_QNAME, client.core.webservice.SelectByRatingResponse.class, null, value);
+    public JAXBElement<SelectByRatingResponse> createSelectByRatingResponse(SelectByRatingResponse value) {
+        return new JAXBElement<SelectByRatingResponse>(_SelectByRatingResponse_QNAME, SelectByRatingResponse.class, null, value);
     }
 
     /**
@@ -353,8 +360,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByGenreResponse")
-    public JAXBElement<client.core.webservice.SelectByGenreResponse> createSelectByGenreResponse(client.core.webservice.SelectByGenreResponse value) {
-        return new JAXBElement<client.core.webservice.SelectByGenreResponse>(_SelectByGenreResponse_QNAME, client.core.webservice.SelectByGenreResponse.class, null, value);
+    public JAXBElement<SelectByGenreResponse> createSelectByGenreResponse(SelectByGenreResponse value) {
+        return new JAXBElement<SelectByGenreResponse>(_SelectByGenreResponse_QNAME, SelectByGenreResponse.class, null, value);
     }
 
     /**
@@ -362,17 +369,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByYearAndGenreResponse")
-    public JAXBElement<client.core.webservice.SelectByYearAndGenreResponse> createSelectByYearAndGenreResponse(client.core.webservice.SelectByYearAndGenreResponse value) {
-        return new JAXBElement<client.core.webservice.SelectByYearAndGenreResponse>(_SelectByYearAndGenreResponse_QNAME, client.core.webservice.SelectByYearAndGenreResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SelectByYearResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByYearResponse")
-    public JAXBElement<client.core.webservice.SelectByYearResponse> createSelectByYearResponse(client.core.webservice.SelectByYearResponse value) {
-        return new JAXBElement<client.core.webservice.SelectByYearResponse>(_SelectByYearResponse_QNAME, client.core.webservice.SelectByYearResponse.class, null, value);
+    public JAXBElement<SelectByYearAndGenreResponse> createSelectByYearAndGenreResponse(SelectByYearAndGenreResponse value) {
+        return new JAXBElement<SelectByYearAndGenreResponse>(_SelectByYearAndGenreResponse_QNAME, SelectByYearAndGenreResponse.class, null, value);
     }
 
     /**
@@ -380,8 +378,17 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByGenre")
-    public JAXBElement<client.core.webservice.SelectByGenre> createSelectByGenre(client.core.webservice.SelectByGenre value) {
-        return new JAXBElement<client.core.webservice.SelectByGenre>(_SelectByGenre_QNAME, client.core.webservice.SelectByGenre.class, null, value);
+    public JAXBElement<SelectByGenre> createSelectByGenre(SelectByGenre value) {
+        return new JAXBElement<SelectByGenre>(_SelectByGenre_QNAME, SelectByGenre.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SelectByYearResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByYearResponse")
+    public JAXBElement<SelectByYearResponse> createSelectByYearResponse(SelectByYearResponse value) {
+        return new JAXBElement<SelectByYearResponse>(_SelectByYearResponse_QNAME, SelectByYearResponse.class, null, value);
     }
 
     /**
@@ -389,8 +396,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByYear")
-    public JAXBElement<client.core.webservice.SelectByYear> createSelectByYear(client.core.webservice.SelectByYear value) {
-        return new JAXBElement<client.core.webservice.SelectByYear>(_SelectByYear_QNAME, client.core.webservice.SelectByYear.class, null, value);
+    public JAXBElement<SelectByYear> createSelectByYear(SelectByYear value) {
+        return new JAXBElement<SelectByYear>(_SelectByYear_QNAME, SelectByYear.class, null, value);
     }
 
     /**
@@ -398,8 +405,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByRatingAndGenreResponse")
-    public JAXBElement<client.core.webservice.SelectByRatingAndGenreResponse> createSelectByRatingAndGenreResponse(client.core.webservice.SelectByRatingAndGenreResponse value) {
-        return new JAXBElement<client.core.webservice.SelectByRatingAndGenreResponse>(_SelectByRatingAndGenreResponse_QNAME, client.core.webservice.SelectByRatingAndGenreResponse.class, null, value);
+    public JAXBElement<SelectByRatingAndGenreResponse> createSelectByRatingAndGenreResponse(SelectByRatingAndGenreResponse value) {
+        return new JAXBElement<SelectByRatingAndGenreResponse>(_SelectByRatingAndGenreResponse_QNAME, SelectByRatingAndGenreResponse.class, null, value);
     }
 
     /**
@@ -416,8 +423,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByDirectorResponse")
-    public JAXBElement<client.core.webservice.SelectByDirectorResponse> createSelectByDirectorResponse(client.core.webservice.SelectByDirectorResponse value) {
-        return new JAXBElement<client.core.webservice.SelectByDirectorResponse>(_SelectByDirectorResponse_QNAME, client.core.webservice.SelectByDirectorResponse.class, null, value);
+    public JAXBElement<SelectByDirectorResponse> createSelectByDirectorResponse(SelectByDirectorResponse value) {
+        return new JAXBElement<SelectByDirectorResponse>(_SelectByDirectorResponse_QNAME, SelectByDirectorResponse.class, null, value);
     }
 
     /**
@@ -425,8 +432,17 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectById")
-    public JAXBElement<client.core.webservice.SelectById> createSelectById(client.core.webservice.SelectById value) {
-        return new JAXBElement<client.core.webservice.SelectById>(_SelectById_QNAME, client.core.webservice.SelectById.class, null, value);
+    public JAXBElement<SelectById> createSelectById(SelectById value) {
+        return new JAXBElement<SelectById>(_SelectById_QNAME, SelectById.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link MovieServiceFault }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservice.core/", name = "IllegalParameterException")
+    public JAXBElement<MovieServiceFault> createIllegalParameterException(MovieServiceFault value) {
+        return new JAXBElement<MovieServiceFault>(_IllegalParameterException_QNAME, MovieServiceFault.class, null, value);
     }
 
     /**
@@ -434,8 +450,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByDirector")
-    public JAXBElement<client.core.webservice.SelectByDirector> createSelectByDirector(client.core.webservice.SelectByDirector value) {
-        return new JAXBElement<client.core.webservice.SelectByDirector>(_SelectByDirector_QNAME, client.core.webservice.SelectByDirector.class, null, value);
+    public JAXBElement<SelectByDirector> createSelectByDirector(SelectByDirector value) {
+        return new JAXBElement<SelectByDirector>(_SelectByDirector_QNAME, SelectByDirector.class, null, value);
     }
 
     /**
@@ -443,8 +459,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByNameResponse")
-    public JAXBElement<client.core.webservice.SelectByNameResponse> createSelectByNameResponse(client.core.webservice.SelectByNameResponse value) {
-        return new JAXBElement<client.core.webservice.SelectByNameResponse>(_SelectByNameResponse_QNAME, client.core.webservice.SelectByNameResponse.class, null, value);
+    public JAXBElement<SelectByNameResponse> createSelectByNameResponse(SelectByNameResponse value) {
+        return new JAXBElement<SelectByNameResponse>(_SelectByNameResponse_QNAME, SelectByNameResponse.class, null, value);
     }
 
     /**
@@ -452,8 +468,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByYearAndGenre")
-    public JAXBElement<client.core.webservice.SelectByYearAndGenre> createSelectByYearAndGenre(client.core.webservice.SelectByYearAndGenre value) {
-        return new JAXBElement<client.core.webservice.SelectByYearAndGenre>(_SelectByYearAndGenre_QNAME, client.core.webservice.SelectByYearAndGenre.class, null, value);
+    public JAXBElement<SelectByYearAndGenre> createSelectByYearAndGenre(SelectByYearAndGenre value) {
+        return new JAXBElement<SelectByYearAndGenre>(_SelectByYearAndGenre_QNAME, SelectByYearAndGenre.class, null, value);
     }
 
     /**
@@ -470,8 +486,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectAll")
-    public JAXBElement<client.core.webservice.SelectAll> createSelectAll(client.core.webservice.SelectAll value) {
-        return new JAXBElement<client.core.webservice.SelectAll>(_SelectAll_QNAME, client.core.webservice.SelectAll.class, null, value);
+    public JAXBElement<SelectAll> createSelectAll(SelectAll value) {
+        return new JAXBElement<SelectAll>(_SelectAll_QNAME, SelectAll.class, null, value);
     }
 
     /**
@@ -479,8 +495,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByName")
-    public JAXBElement<client.core.webservice.SelectByName> createSelectByName(client.core.webservice.SelectByName value) {
-        return new JAXBElement<client.core.webservice.SelectByName>(_SelectByName_QNAME, client.core.webservice.SelectByName.class, null, value);
+    public JAXBElement<SelectByName> createSelectByName(SelectByName value) {
+        return new JAXBElement<SelectByName>(_SelectByName_QNAME, SelectByName.class, null, value);
     }
 
     /**
@@ -488,8 +504,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByIdResponse")
-    public JAXBElement<client.core.webservice.SelectByIdResponse> createSelectByIdResponse(client.core.webservice.SelectByIdResponse value) {
-        return new JAXBElement<client.core.webservice.SelectByIdResponse>(_SelectByIdResponse_QNAME, client.core.webservice.SelectByIdResponse.class, null, value);
+    public JAXBElement<SelectByIdResponse> createSelectByIdResponse(SelectByIdResponse value) {
+        return new JAXBElement<SelectByIdResponse>(_SelectByIdResponse_QNAME, SelectByIdResponse.class, null, value);
     }
 
     /**
@@ -506,8 +522,8 @@ public class ObjectFactory {
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByRatingAndGenre")
-    public JAXBElement<client.core.webservice.SelectByRatingAndGenre> createSelectByRatingAndGenre(client.core.webservice.SelectByRatingAndGenre value) {
-        return new JAXBElement<client.core.webservice.SelectByRatingAndGenre>(_SelectByRatingAndGenre_QNAME, client.core.webservice.SelectByRatingAndGenre.class, null, value);
+    public JAXBElement<SelectByRatingAndGenre> createSelectByRatingAndGenre(SelectByRatingAndGenre value) {
+        return new JAXBElement<SelectByRatingAndGenre>(_SelectByRatingAndGenre_QNAME, SelectByRatingAndGenre.class, null, value);
     }
 
 }

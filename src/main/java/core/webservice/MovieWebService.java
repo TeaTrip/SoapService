@@ -1,5 +1,7 @@
 package core.webservice;
 
+import core.errors.IllegalParameterException;
+import core.errors.MovieServiceFault;
 import core.methods.movie.MovieMethodsImplement;
 import core.models.Movie;
 
@@ -82,7 +84,28 @@ public class MovieWebService implements MovieWebServiceI {
                               @WebParam(name = "year") int year,
                               @WebParam(name = "rating") int rating,
                               @WebParam(name = "genre") String genre,
-                              @WebParam(name = "director") String director) {
+                              @WebParam(name = "director") String director)
+                              throws IllegalParameterException {
+        if(name == null || name.trim().isEmpty()){
+            MovieServiceFault fault = MovieServiceFault.defaultInstance();
+            throw new IllegalParameterException("name is not specified", fault);
+        }
+        if(year < 0){
+            MovieServiceFault fault = MovieServiceFault.defaultInstance();
+            throw new IllegalParameterException("year cannot be negative", fault);
+        }
+        if(rating < 1 && rating > 10){
+            MovieServiceFault fault = MovieServiceFault.defaultInstance();
+            throw new IllegalParameterException("rating should be in 1 to 10 range", fault);
+        }
+        if(genre == null || genre.trim().isEmpty()){
+            MovieServiceFault fault = MovieServiceFault.defaultInstance();
+            throw new IllegalParameterException("genre is not specified", fault);
+        }
+        if(director == null || director.trim().isEmpty()){
+            MovieServiceFault fault = MovieServiceFault.defaultInstance();
+            throw new IllegalParameterException("director is not specified", fault);
+        }
         Movie movie = new Movie(0, year, rating, name, genre, director);
         return dbMovie.createNewMovie(movie);
     }
@@ -94,14 +117,42 @@ public class MovieWebService implements MovieWebServiceI {
                            @WebParam(name = "year") int year,
                            @WebParam(name = "rating") int rating,
                            @WebParam(name = "genre") String genre,
-                           @WebParam(name = "director") String director) {
+                           @WebParam(name = "director") String director)
+                           throws IllegalParameterException {
+
+        System.out.println(selectById(id).getId());
+        if(selectById(id).getId() == 0){
+            MovieServiceFault fault = MovieServiceFault.defaultInstance();
+            throw new IllegalParameterException("Row with this id not found", fault);
+        }
+
+        if(year < 0){
+            MovieServiceFault fault = MovieServiceFault.defaultInstance();
+            throw new IllegalParameterException("year cannot be negative", fault);
+        }
+        if(rating < 1 && rating > 10){
+            MovieServiceFault fault = MovieServiceFault.defaultInstance();
+            throw new IllegalParameterException("rating should be in 1 to 10 range", fault);
+        }
+        if(genre == null || genre.trim().isEmpty()){
+            MovieServiceFault fault = MovieServiceFault.defaultInstance();
+            throw new IllegalParameterException("genre is not specified", fault);
+        }
+        if(director == null || director.trim().isEmpty()){
+            MovieServiceFault fault = MovieServiceFault.defaultInstance();
+            throw new IllegalParameterException("director is not specified", fault);
+        }
         Movie movie = new Movie(id, year, rating, name, genre, director);
         return dbMovie.updateMovie(movie);
     }
 
     @WebMethod(operationName = "deleteMovie")
     @Override
-    public int deleteMovie(@WebParam(name = "id") int id) {
+    public int deleteMovie(@WebParam(name = "id") int id) throws IllegalParameterException{
+        if(selectById(id).getId() == 0){
+            MovieServiceFault fault = MovieServiceFault.defaultInstance();
+            throw new IllegalParameterException("Row with this id not found", fault);
+        }
         return dbMovie.deleteMovie(id);
     }
 }
