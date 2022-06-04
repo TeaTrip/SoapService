@@ -105,20 +105,20 @@ public class Client {
 
         System.out.println("\n===============================\n" +
                 "createNewMovie\n");
-        int id = movieService.getMovieWebServicePort().createNewMovie("new film", 1998, 8, "so sad", "Morgan Freeman");
+        int id = movieService.getMovieWebServicePort().createNewMovie("New right now", 1998, 8, "so sad", "Morgan Freeman");
         System.out.println("Created movie id is - "+id);
         System.out.println("===============================");
 
         System.out.println("\n===============================\n" +
-                "createNewMovie\n");
-        int updateCode = movieService.getMovieWebServicePort().updateMovie(1,"new film UPDATED", 1998, 8, "so good", "Obama");
-        System.out.println("Created movie id is - "+updateCode);
+                "updateMovie\n");
+        int updateCode = movieService.getMovieWebServicePort().updateMovie(7,"new film UPDATED", 1998, 8, "so good", "Obama");
+        System.out.println("update movie status code - "+updateCode);
         System.out.println("===============================");
 
         System.out.println("\n===============================\n" +
-                "createNewMovie\n");
-        int deleteCode = movieService.getMovieWebServicePort().deleteMovie(2);
-        System.out.println("Created movie id is - "+updateCode);
+                "delete movie\n");
+        int deleteCode = movieService.getMovieWebServicePort().deleteMovie(3);
+        System.out.println("Delete movie status code - "+deleteCode);
         System.out.println("===============================");
 
         System.out.println("\n===============================\n" +
