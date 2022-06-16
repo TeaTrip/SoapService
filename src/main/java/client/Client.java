@@ -124,7 +124,7 @@ public class Client {
         System.out.println("\n===============================\n" +
                 "createNewMovie\n");
         try {
-            int id = movieService.getMovieWebServicePort().createNewMovie("new film", 1998, 8, "so sad", "Morgan Freeman");
+            int id = movieService.getMovieWebServicePort().createNewMovie("", 1998, 8, "so sad", "Morgan Freeman");
             System.out.println("Created movie id is - "+id);
         }
         catch (IllegalParameterException e){
@@ -149,7 +149,7 @@ public class Client {
 
 
         System.out.println("\n===============================\n" +
-                "createNewMovie\n");
+                "deleteMovie\n");
         try {
             int deleteCode = movieService.getMovieWebServicePort().deleteMovie(2000);
             System.out.println("Deleted movie id is - "+deleteCode);
