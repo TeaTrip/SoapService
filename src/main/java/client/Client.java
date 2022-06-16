@@ -4,11 +4,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Properties;
+import java.util.function.Supplier;
+
 
 
 import client.core.webservice.IllegalParameterException;
 import client.core.webservice.Movie;
 import client.core.webservice.MovieService;
+import client.core.webservice.MovieWebService;
 import core.methods.movie.MovieMethodsImplement;
 //import core.wishmaster.ifmo.ws.jaxws.client.Movie;
 //import core.wishmaster.ifmo.ws.jaxws.client.MovieService;
@@ -29,11 +32,17 @@ public class Client {
 
         URL url = new URL("http://localhost:8282/MovieService?wsdl");
         URL url2 = new URL("http://desktop-fnkud04:8080/J2EEService-2.0-SNAPSHOT/MovieService?wsdl");
-        MovieService movieService = new MovieService(url);
+        //MovieService movieService = new MovieService(url);
+
+        Supplier<MovieWebService> movieSupplier = () -> { return new MovieService(url).getMovieWebServicePort();};
+
+        ServiceObjectPool<MovieWebService> servicePool = new ServiceObjectPool<>(movieSupplier);
+        MovieWebService movieService = servicePool.getProxy(MovieWebService.class);
+
 
         System.out.println("\n===============================\n" +
                 "selectAll\n");
-        List<Movie> movies = movieService.getMovieWebServicePort().selectAll();
+        List<Movie> movies = movieService.selectAll();
         for (Movie movie : movies) {
             System.out.println(movie.toString());
         }
@@ -43,7 +52,7 @@ public class Client {
 
         System.out.println("\n===============================\n" +
                 "selectByName\n");
-        movies = movieService.getMovieWebServicePort().selectByName("Не смотрите наверх");
+        movies = movieService.selectByName("Не смотрите наверх");
         for (Movie movie : movies) {
             System.out.println(movie.toString());
         }
@@ -53,7 +62,7 @@ public class Client {
 
         System.out.println("\n===============================\n" +
                 "selectByDirector\n");
-        movies = movieService.getMovieWebServicePort().selectByDirector("Рейнальдо Маркус Грин");
+        movies = movieService.selectByDirector("Рейнальдо Маркус Грин");
         for (Movie movie : movies) {
             System.out.println(movie.toString());
         }
@@ -63,7 +72,7 @@ public class Client {
 
         System.out.println("\n===============================\n" +
                 "selectByGenre\n");
-        movies = movieService.getMovieWebServicePort().selectByGenre("Комедия");
+        movies = movieService.selectByGenre("Комедия");
         for (Movie movie : movies) {
             System.out.println(movie.toString());
         }
@@ -73,7 +82,7 @@ public class Client {
 
         System.out.println("\n===============================\n" +
                 "selectByRating\n");
-        movies = movieService.getMovieWebServicePort().selectByRating(6);
+        movies = movieService.selectByRating(6);
         for (Movie movie : movies) {
             System.out.println(movie.toString());
         }
@@ -83,7 +92,7 @@ public class Client {
 
         System.out.println("\n===============================\n" +
                 "selectByYear\n");
-        movies = movieService.getMovieWebServicePort().selectByYear(2009);
+        movies = movieService.selectByYear(2009);
         for (Movie movie : movies) {
             System.out.println(movie.toString());
         }
@@ -93,7 +102,7 @@ public class Client {
 
         System.out.println("\n===============================\n" +
                 "selectByRatingAndGenre\n");
-        movies = movieService.getMovieWebServicePort().selectByRatingAndGenre("7", "Драма");
+        movies = movieService.selectByRatingAndGenre("7", "Драма");
         for (Movie movie : movies) {
             System.out.println(movie.toString());
         }
@@ -103,7 +112,7 @@ public class Client {
 
         System.out.println("\n===============================\n" +
                 "selectByYearAndGenre\n");
-        movies = movieService.getMovieWebServicePort().selectByYearAndGenre("2021", "Драма");
+        movies = movieService.selectByYearAndGenre("2021", "Драма");
         for (Movie movie : movies) {
             System.out.println(movie.toString());
         }
@@ -113,7 +122,7 @@ public class Client {
 
         System.out.println("\n===============================\n" +
                 "selectByYearAndRating\n");
-        movies = movieService.getMovieWebServicePort().selectByYearAndRating("2021", "7");
+        movies = movieService.selectByYearAndRating("2021", "7");
         for (Movie movie : movies) {
             System.out.println(movie.toString());
         }
@@ -124,7 +133,7 @@ public class Client {
         System.out.println("\n===============================\n" +
                 "createNewMovie\n");
         try {
-            int id = movieService.getMovieWebServicePort().createNewMovie("", 1998, 8, "so sad", "Morgan Freeman");
+            int id = movieService.createNewMovie("", 1998, 8, "so sad", "Morgan Freeman");
             System.out.println("Created movie id is - "+id);
         }
         catch (IllegalParameterException e){
@@ -138,7 +147,7 @@ public class Client {
                 "updateMovie\n");
         try {
             int updateCode = 0;
-            updateCode = movieService.getMovieWebServicePort().updateMovie(100,"new film UPDATED", 1998, 8, "so good", "Obama");
+            updateCode = movieService.updateMovie(100,"new film UPDATED", 1998, 8, "so good", "Obama");
             System.out.println("Updated movie id is - "+updateCode);
         } catch (IllegalParameterException e) {
             System.out.println(e.getMessage());
@@ -151,7 +160,7 @@ public class Client {
         System.out.println("\n===============================\n" +
                 "deleteMovie\n");
         try {
-            int deleteCode = movieService.getMovieWebServicePort().deleteMovie(2000);
+            int deleteCode = movieService.deleteMovie(2000);
             System.out.println("Deleted movie id is - "+deleteCode);
         } catch (IllegalParameterException e) {
             System.out.println(e.getMessage());
@@ -163,7 +172,7 @@ public class Client {
 
         System.out.println("\n===============================\n" +
                 "selectAll\n");
-        movies = movieService.getMovieWebServicePort().selectAll();
+        movies = movieService.selectAll();
         for (Movie movie : movies) {
             System.out.println(movie.toString());
         }
