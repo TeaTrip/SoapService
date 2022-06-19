@@ -34,4 +34,6 @@ public interface MovieWebServiceI {
     public int updateMovie(int id, String name, int year, int rating, String genre, String director) throws IllegalParameterException;
 
     public int deleteMovie(int id) throws IllegalParameterException;
+
+    public void uploadBinaryData(byte[] content);
 }

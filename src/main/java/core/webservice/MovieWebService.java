@@ -11,9 +11,12 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.xml.soap.SOAPMessage;
+import javax.xml.ws.soap.MTOM;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@MTOM
 @WebService(serviceName = "MovieService")
 public class MovieWebService implements MovieWebServiceI {
     private final MovieMethodsImplement dbMovie = new MovieMethodsImplement();
@@ -163,5 +166,17 @@ public class MovieWebService implements MovieWebServiceI {
             throw new IllegalParameterException("Row with this id not found", fault);
         }
         return dbMovie.deleteMovie(id);
+    }
+
+    @WebMethod(operationName = "uploadBinaryData")
+    @Override
+    public void uploadBinaryData(byte[] content){
+        try{
+            System.out.write(content);
+        }
+        catch (IOException e){
+            System.out.println(e);
+        }
+
     }
 }
