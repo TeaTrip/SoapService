@@ -2,6 +2,7 @@ package core.methods.movie;
 
 import core.connection.Connector;
 import core.models.Movie;
+import core.webservice.MovieWebService;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -45,6 +46,7 @@ public class MovieMethodsImplement implements MovieMethods {
             System.out.println("selectAll error");
             e.printStackTrace();
         }
+       MovieWebService.numCalls.decrementAndGet();
         return movies;
     }
 

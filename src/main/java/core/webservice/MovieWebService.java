@@ -2,22 +2,31 @@ package core.webservice;
 
 import core.errors.IllegalParameterException;
 import core.errors.MovieServiceFault;
+import core.errors.ThrottlingException;
 import core.methods.movie.MovieMethodsImplement;
 import core.models.Movie;
 
+import javax.jws.HandlerChain;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import javax.xml.soap.SOAPMessage;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @WebService(serviceName = "MovieService")
 public class MovieWebService implements MovieWebServiceI {
     private final MovieMethodsImplement dbMovie = new MovieMethodsImplement();
-
+    public static AtomicInteger numCalls = new AtomicInteger(0);
 
     @WebMethod(operationName = "selectAll")
     @Override
-    public List<Movie> selectAll() {
+    public List<Movie> selectAll() throws ThrottlingException {
+        if(numCalls.get() > 3){
+            MovieServiceFault fault = MovieServiceFault.defaultInstance();
+            throw new ThrottlingException("Concurrent request limit reached", fault);
+        }
+        numCalls.getAndIncrement();
         return dbMovie.selectAll();
     }
 

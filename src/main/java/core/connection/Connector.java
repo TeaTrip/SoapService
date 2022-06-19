@@ -12,7 +12,6 @@ public class Connector {
         String password = "2760591";
         try {
             connection = DriverManager.getConnection(jdbcURL, username, password);
-            System.out.println("Connected to PostgreSQL server");
         } catch (SQLException e) {
             System.out.println("Error in connection to PostgreSQL server");
             e.printStackTrace();

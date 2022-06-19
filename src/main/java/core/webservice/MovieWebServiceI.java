@@ -1,6 +1,7 @@
 package core.webservice;
 
 import core.errors.IllegalParameterException;
+import core.errors.ThrottlingException;
 import core.models.Movie;
 
 import javax.jws.WebMethod;
@@ -8,7 +9,7 @@ import javax.jws.WebParam;
 import java.util.List;
 
 public interface MovieWebServiceI {
-    public List<Movie> selectAll();
+    public List<Movie> selectAll() throws ThrottlingException;
 
     public Movie selectById(int id);
 

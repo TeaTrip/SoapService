@@ -12,6 +12,7 @@ import client.core.webservice.IllegalParameterException;
 import client.core.webservice.Movie;
 import client.core.webservice.MovieService;
 import client.core.webservice.MovieWebService;
+import client.core.webservice.ThrottlingException;
 import core.methods.movie.MovieMethodsImplement;
 //import core.wishmaster.ifmo.ws.jaxws.client.Movie;
 //import core.wishmaster.ifmo.ws.jaxws.client.MovieService;
@@ -39,16 +40,21 @@ public class Client {
         ServiceObjectPool<MovieWebService> servicePool = new ServiceObjectPool<>(movieSupplier);
         MovieWebService movieService = servicePool.getProxy(MovieWebService.class);
 
+        List<Movie> movies;
 
-        System.out.println("\n===============================\n" +
-                "selectAll\n");
-        List<Movie> movies = movieService.selectAll();
-        for (Movie movie : movies) {
-            System.out.println(movie.toString());
+
+        try{
+            System.out.println("\n===============================\n" +
+                    "selectAll\n");
+            movies = movieService.selectAll();
+            for (Movie movie : movies) {
+                System.out.println(movie.toString());
+            }
+            System.out.println("===============================");
         }
-        System.out.println("===============================");
-
-
+        catch (ThrottlingException e){
+            System.out.println(e.getMessage());
+        }
 
         System.out.println("\n===============================\n" +
                 "selectByName\n");
@@ -170,13 +176,18 @@ public class Client {
 
 
 
-        System.out.println("\n===============================\n" +
-                "selectAll\n");
-        movies = movieService.selectAll();
-        for (Movie movie : movies) {
-            System.out.println(movie.toString());
+        try{
+            System.out.println("\n===============================\n" +
+                    "selectAll\n");
+            movies = movieService.selectAll();
+            for (Movie movie : movies) {
+                System.out.println(movie.toString());
+            }
+            System.out.println("===============================");
+        }catch (ThrottlingException e){
+            System.out.println(e.getMessage());
         }
-        System.out.println("===============================");
+
 
     /*
     MovieService_Service movieService = new MovieService_Service(url);
