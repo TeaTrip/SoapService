@@ -27,23 +27,6 @@ public interface MovieWebService {
     /**
      * 
      * @param year
-     * @param genre
-     * @return
-     *     returns java.util.List<client.core.webservice.Movie>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "selectByYearAndGenre", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectByYearAndGenre")
-    @ResponseWrapper(localName = "selectByYearAndGenreResponse", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectByYearAndGenreResponse")
-    public List<Movie> selectByYearAndGenre(
-        @WebParam(name = "year", targetNamespace = "")
-        String year,
-        @WebParam(name = "genre", targetNamespace = "")
-        String genre);
-
-    /**
-     * 
-     * @param year
      * @param rating
      * @return
      *     returns java.util.List<client.core.webservice.Movie>
@@ -77,45 +60,69 @@ public interface MovieWebService {
 
     /**
      * 
-     * @param director
+     * @param year
+     * @param genre
      * @return
      *     returns java.util.List<client.core.webservice.Movie>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "selectByDirector", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectByDirector")
-    @ResponseWrapper(localName = "selectByDirectorResponse", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectByDirectorResponse")
-    public List<Movie> selectByDirector(
-        @WebParam(name = "director", targetNamespace = "")
-        String director);
+    @RequestWrapper(localName = "selectByYearAndGenre", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectByYearAndGenre")
+    @ResponseWrapper(localName = "selectByYearAndGenreResponse", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectByYearAndGenreResponse")
+    public List<Movie> selectByYearAndGenre(
+        @WebParam(name = "year", targetNamespace = "")
+        String year,
+        @WebParam(name = "genre", targetNamespace = "")
+        String genre);
 
     /**
      * 
+     * @return
+     *     returns java.util.List<client.core.webservice.Movie>
+     * @throws ThrottlingException
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "selectAll", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectAll")
+    @ResponseWrapper(localName = "selectAllResponse", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectAllResponse")
+    public List<Movie> selectAll()
+        throws ThrottlingException
+    ;
+
+    /**
+     * 
+     * @param credential
+     * @param year
+     * @param director
+     * @param name
+     * @param rating
+     * @param genre
      * @param id
      * @return
-     *     returns client.core.webservice.Movie
+     *     returns int
+     * @throws IllegalParameterException
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "selectById", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectById")
-    @ResponseWrapper(localName = "selectByIdResponse", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectByIdResponse")
-    public Movie selectById(
+    @RequestWrapper(localName = "updateMovie", targetNamespace = "http://webservice.core/", className = "client.core.webservice.UpdateMovie")
+    @ResponseWrapper(localName = "updateMovieResponse", targetNamespace = "http://webservice.core/", className = "client.core.webservice.UpdateMovieResponse")
+    public int updateMovie(
         @WebParam(name = "id", targetNamespace = "")
-        int id);
-
-    /**
-     * 
-     * @param year
-     * @return
-     *     returns java.util.List<client.core.webservice.Movie>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "selectByYear", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectByYear")
-    @ResponseWrapper(localName = "selectByYearResponse", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectByYearResponse")
-    public List<Movie> selectByYear(
+        int id,
+        @WebParam(name = "name", targetNamespace = "")
+        String name,
         @WebParam(name = "year", targetNamespace = "")
-        int year);
+        int year,
+        @WebParam(name = "rating", targetNamespace = "")
+        int rating,
+        @WebParam(name = "genre", targetNamespace = "")
+        String genre,
+        @WebParam(name = "director", targetNamespace = "")
+        String director,
+        @WebParam(name = "credential", targetNamespace = "")
+        String credential)
+        throws IllegalParameterException
+    ;
 
     /**
      * 
@@ -148,10 +155,20 @@ public interface MovieWebService {
     /**
      * 
      * @param year
-     * @param director
-     * @param name
-     * @param rating
-     * @param genre
+     * @return
+     *     returns java.util.List<client.core.webservice.Movie>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "selectByYear", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectByYear")
+    @ResponseWrapper(localName = "selectByYearResponse", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectByYearResponse")
+    public List<Movie> selectByYear(
+        @WebParam(name = "year", targetNamespace = "")
+        int year);
+
+    /**
+     * 
+     * @param credential
      * @param id
      * @return
      *     returns int
@@ -159,26 +176,47 @@ public interface MovieWebService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "updateMovie", targetNamespace = "http://webservice.core/", className = "client.core.webservice.UpdateMovie")
-    @ResponseWrapper(localName = "updateMovieResponse", targetNamespace = "http://webservice.core/", className = "client.core.webservice.UpdateMovieResponse")
-    public int updateMovie(
+    @RequestWrapper(localName = "deleteMovie", targetNamespace = "http://webservice.core/", className = "client.core.webservice.DeleteMovie")
+    @ResponseWrapper(localName = "deleteMovieResponse", targetNamespace = "http://webservice.core/", className = "client.core.webservice.DeleteMovieResponse")
+    public int deleteMovie(
         @WebParam(name = "id", targetNamespace = "")
         int id,
-        @WebParam(name = "name", targetNamespace = "")
-        String name,
-        @WebParam(name = "year", targetNamespace = "")
-        int year,
-        @WebParam(name = "rating", targetNamespace = "")
-        int rating,
-        @WebParam(name = "genre", targetNamespace = "")
-        String genre,
-        @WebParam(name = "director", targetNamespace = "")
-        String director)
+        @WebParam(name = "credential", targetNamespace = "")
+        String credential)
         throws IllegalParameterException
     ;
 
     /**
      * 
+     * @param rating
+     * @return
+     *     returns java.util.List<client.core.webservice.Movie>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "selectByRating", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectByRating")
+    @ResponseWrapper(localName = "selectByRatingResponse", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectByRatingResponse")
+    public List<Movie> selectByRating(
+        @WebParam(name = "rating", targetNamespace = "")
+        int rating);
+
+    /**
+     * 
+     * @param director
+     * @return
+     *     returns java.util.List<client.core.webservice.Movie>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "selectByDirector", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectByDirector")
+    @ResponseWrapper(localName = "selectByDirectorResponse", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectByDirectorResponse")
+    public List<Movie> selectByDirector(
+        @WebParam(name = "director", targetNamespace = "")
+        String director);
+
+    /**
+     * 
+     * @param credential
      * @param year
      * @param director
      * @param name
@@ -202,7 +240,9 @@ public interface MovieWebService {
         @WebParam(name = "genre", targetNamespace = "")
         String genre,
         @WebParam(name = "director", targetNamespace = "")
-        String director)
+        String director,
+        @WebParam(name = "credential", targetNamespace = "")
+        String credential)
         throws IllegalParameterException
     ;
 
@@ -210,45 +250,25 @@ public interface MovieWebService {
      * 
      * @param id
      * @return
-     *     returns int
-     * @throws IllegalParameterException
+     *     returns client.core.webservice.Movie
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "deleteMovie", targetNamespace = "http://webservice.core/", className = "client.core.webservice.DeleteMovie")
-    @ResponseWrapper(localName = "deleteMovieResponse", targetNamespace = "http://webservice.core/", className = "client.core.webservice.DeleteMovieResponse")
-    public int deleteMovie(
+    @RequestWrapper(localName = "selectById", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectById")
+    @ResponseWrapper(localName = "selectByIdResponse", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectByIdResponse")
+    public Movie selectById(
         @WebParam(name = "id", targetNamespace = "")
-        int id)
-        throws IllegalParameterException
-    ;
+        int id);
 
     /**
      * 
-     * @param rating
-     * @return
-     *     returns java.util.List<client.core.webservice.Movie>
+     * @param arg0
      */
     @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "selectByRating", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectByRating")
-    @ResponseWrapper(localName = "selectByRatingResponse", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectByRatingResponse")
-    public List<Movie> selectByRating(
-        @WebParam(name = "rating", targetNamespace = "")
-        int rating);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<client.core.webservice.Movie>
-     * @throws ThrottlingException
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "selectAll", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectAll")
-    @ResponseWrapper(localName = "selectAllResponse", targetNamespace = "http://webservice.core/", className = "client.core.webservice.SelectAllResponse")
-    public List<Movie> selectAll()
-        throws ThrottlingException
-    ;
+    @RequestWrapper(localName = "uploadBinaryData", targetNamespace = "http://webservice.core/", className = "client.core.webservice.UploadBinaryData")
+    @ResponseWrapper(localName = "uploadBinaryDataResponse", targetNamespace = "http://webservice.core/", className = "client.core.webservice.UploadBinaryDataResponse")
+    public void uploadBinaryData(
+        @WebParam(name = "arg0", targetNamespace = "")
+        byte[] arg0);
 
 }

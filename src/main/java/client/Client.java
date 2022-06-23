@@ -40,6 +40,9 @@ public class Client {
         ServiceObjectPool<MovieWebService> servicePool = new ServiceObjectPool<>(movieSupplier);
         MovieWebService movieService = servicePool.getProxy(MovieWebService.class);
 
+        Credential credential = new Credential("root", "admin");
+        System.out.println(credential.getAuthString());
+
         List<Movie> movies;
 
 
@@ -139,7 +142,7 @@ public class Client {
         System.out.println("\n===============================\n" +
                 "createNewMovie\n");
         try {
-            int id = movieService.createNewMovie("", 1998, 8, "so sad", "Morgan Freeman");
+            int id = movieService.createNewMovie("Yo", 1998, 8, "so sad", "Morgan Freeman", credential.getAuthString());
             System.out.println("Created movie id is - "+id);
         }
         catch (IllegalParameterException e){
@@ -153,7 +156,7 @@ public class Client {
                 "updateMovie\n");
         try {
             int updateCode = 0;
-            updateCode = movieService.updateMovie(100,"new film UPDATED", 1998, 8, "so good", "Obama");
+            updateCode = movieService.updateMovie(100,"new film UPDATED", 1998, 8, "so good", "Obama", credential.getAuthString());
             System.out.println("Updated movie id is - "+updateCode);
         } catch (IllegalParameterException e) {
             System.out.println(e.getMessage());
@@ -166,7 +169,7 @@ public class Client {
         System.out.println("\n===============================\n" +
                 "deleteMovie\n");
         try {
-            int deleteCode = movieService.deleteMovie(2000);
+            int deleteCode = movieService.deleteMovie(2000, credential.getAuthString());
             System.out.println("Deleted movie id is - "+deleteCode);
         } catch (IllegalParameterException e) {
             System.out.println(e.getMessage());

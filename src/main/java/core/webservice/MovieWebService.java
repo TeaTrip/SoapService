@@ -96,8 +96,14 @@ public class MovieWebService implements MovieWebServiceI {
                               @WebParam(name = "year") int year,
                               @WebParam(name = "rating") int rating,
                               @WebParam(name = "genre") String genre,
-                              @WebParam(name = "director") String director)
+                              @WebParam(name = "director") String director,
+                              @WebParam(name = "credential") String credential)
                               throws IllegalParameterException {
+        if(!credential.equals("Basic cm9vdDphZG1pbg==")){
+            MovieServiceFault fault = MovieServiceFault.defaultInstance();
+            throw new IllegalParameterException("Auth failed, plc check login/password", fault);
+        }
+
         if(name == null || name.trim().isEmpty()){
             MovieServiceFault fault = MovieServiceFault.defaultInstance();
             throw new IllegalParameterException("name is not specified", fault);
@@ -129,8 +135,14 @@ public class MovieWebService implements MovieWebServiceI {
                            @WebParam(name = "year") int year,
                            @WebParam(name = "rating") int rating,
                            @WebParam(name = "genre") String genre,
-                           @WebParam(name = "director") String director)
+                           @WebParam(name = "director") String director,
+                           @WebParam(name = "credential") String credential)
                            throws IllegalParameterException {
+
+        if(!credential.equals("Basic cm9vdDphZG1pbg==")){
+            MovieServiceFault fault = MovieServiceFault.defaultInstance();
+            throw new IllegalParameterException("Auth failed, plc check login/password", fault);
+        }
 
         System.out.println(selectById(id).getId());
         if(selectById(id).getId() == 0){
@@ -160,7 +172,12 @@ public class MovieWebService implements MovieWebServiceI {
 
     @WebMethod(operationName = "deleteMovie")
     @Override
-    public int deleteMovie(@WebParam(name = "id") int id) throws IllegalParameterException{
+    public int deleteMovie(@WebParam(name = "id") int id, @WebParam(name = "credential") String credential) throws IllegalParameterException{
+        if(!credential.equals("Basic cm9vdDphZG1pbg==")){
+            MovieServiceFault fault = MovieServiceFault.defaultInstance();
+            throw new IllegalParameterException("Auth failed, plc check login/password", fault);
+        }
+
         if(selectById(id).getId() == 0){
             MovieServiceFault fault = MovieServiceFault.defaultInstance();
             throw new IllegalParameterException("Row with this id not found", fault);

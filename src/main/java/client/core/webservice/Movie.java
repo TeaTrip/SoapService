@@ -168,15 +168,4 @@ public class Movie {
         this.year = value;
     }
 
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "director='" + director + '\'' +
-                ", genre='" + genre + '\'' +
-                ", id=" + id +
-                ", name='" + name + '\'' +
-                ", rating=" + rating +
-                ", year=" + year +
-                '}';
-    }
 }

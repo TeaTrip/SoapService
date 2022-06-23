@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="rating" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="genre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="director" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="credential" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,7 +36,8 @@ import javax.xml.bind.annotation.XmlType;
     "year",
     "rating",
     "genre",
-    "director"
+    "director",
+    "credential"
 })
 public class CreateNewMovie {
 
@@ -44,6 +46,7 @@ public class CreateNewMovie {
     protected int rating;
     protected String genre;
     protected String director;
+    protected String credential;
 
     /**
      * Gets the value of the name property.
@@ -147,6 +150,30 @@ public class CreateNewMovie {
      */
     public void setDirector(String value) {
         this.director = value;
+    }
+
+    /**
+     * Gets the value of the credential property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCredential() {
+        return credential;
+    }
+
+    /**
+     * Sets the value of the credential property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCredential(String value) {
+        this.credential = value;
     }
 
 }

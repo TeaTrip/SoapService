@@ -33,6 +33,7 @@ public class ObjectFactory {
     private final static QName _SelectByGenreResponse_QNAME = new QName("http://webservice.core/", "selectByGenreResponse");
     private final static QName _SelectByYearAndGenre_QNAME = new QName("http://webservice.core/", "selectByYearAndGenre");
     private final static QName _SelectByRatingResponse_QNAME = new QName("http://webservice.core/", "selectByRatingResponse");
+    private final static QName _UploadBinaryData_QNAME = new QName("http://webservice.core/", "uploadBinaryData");
     private final static QName _CreateNewMovieResponse_QNAME = new QName("http://webservice.core/", "createNewMovieResponse");
     private final static QName _DeleteMovieResponse_QNAME = new QName("http://webservice.core/", "deleteMovieResponse");
     private final static QName _SelectById_QNAME = new QName("http://webservice.core/", "selectById");
@@ -43,6 +44,7 @@ public class ObjectFactory {
     private final static QName _SelectByIdResponse_QNAME = new QName("http://webservice.core/", "selectByIdResponse");
     private final static QName _SelectByRatingAndGenreResponse_QNAME = new QName("http://webservice.core/", "selectByRatingAndGenreResponse");
     private final static QName _SelectByDirectorResponse_QNAME = new QName("http://webservice.core/", "selectByDirectorResponse");
+    private final static QName _UploadBinaryDataResponse_QNAME = new QName("http://webservice.core/", "uploadBinaryDataResponse");
     private final static QName _SelectByYearResponse_QNAME = new QName("http://webservice.core/", "selectByYearResponse");
     private final static QName _ThrottlingException_QNAME = new QName("http://webservice.core/", "ThrottlingException");
     private final static QName _SelectByNameResponse_QNAME = new QName("http://webservice.core/", "selectByNameResponse");
@@ -106,6 +108,14 @@ public class ObjectFactory {
      */
     public SelectByRatingResponse createSelectByRatingResponse() {
         return new SelectByRatingResponse();
+    }
+
+    /**
+     * Create an instance of {@link UploadBinaryData }
+     * 
+     */
+    public UploadBinaryData createUploadBinaryData() {
+        return new UploadBinaryData();
     }
 
     /**
@@ -277,6 +287,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link UploadBinaryDataResponse }
+     * 
+     */
+    public UploadBinaryDataResponse createUploadBinaryDataResponse() {
+        return new UploadBinaryDataResponse();
+    }
+
+    /**
      * Create an instance of {@link Movie }
      * 
      */
@@ -363,6 +381,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByRatingResponse")
     public JAXBElement<SelectByRatingResponse> createSelectByRatingResponse(SelectByRatingResponse value) {
         return new JAXBElement<SelectByRatingResponse>(_SelectByRatingResponse_QNAME, SelectByRatingResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UploadBinaryData }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservice.core/", name = "uploadBinaryData")
+    public JAXBElement<UploadBinaryData> createUploadBinaryData(UploadBinaryData value) {
+        return new JAXBElement<UploadBinaryData>(_UploadBinaryData_QNAME, UploadBinaryData.class, null, value);
     }
 
     /**
@@ -453,6 +480,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://webservice.core/", name = "selectByDirectorResponse")
     public JAXBElement<SelectByDirectorResponse> createSelectByDirectorResponse(SelectByDirectorResponse value) {
         return new JAXBElement<SelectByDirectorResponse>(_SelectByDirectorResponse_QNAME, SelectByDirectorResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UploadBinaryDataResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservice.core/", name = "uploadBinaryDataResponse")
+    public JAXBElement<UploadBinaryDataResponse> createUploadBinaryDataResponse(UploadBinaryDataResponse value) {
+        return new JAXBElement<UploadBinaryDataResponse>(_UploadBinaryDataResponse_QNAME, UploadBinaryDataResponse.class, null, value);
     }
 
     /**
